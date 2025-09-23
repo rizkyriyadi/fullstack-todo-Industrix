@@ -1,0 +1,57 @@
+# Ignore these files and directories when building Docker image
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+TECHNICAL_ANSWERS.md
+*.md
+
+# Environment files
+.env
+.env.local
+.env.example
+
+# Build artifacts
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test and coverage files
+*.test
+*.out
+coverage.html
+coverage.out
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Docker files (don't need them in the image)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Air configuration (for hot reload)
+.air.toml
