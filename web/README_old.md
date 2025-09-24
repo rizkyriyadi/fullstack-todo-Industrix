@@ -2,7 +2,7 @@
 
 A modern, responsive React application built with TypeScript and Ant Design. This frontend provides an intuitive interface for managing todos with advanced filtering, real-time search, and mobile-first design.
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 16 or higher
@@ -39,7 +39,7 @@ npm run build     # Creates optimized production build
 npm run serve     # Serve production build locally
 ```
 
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 web/
@@ -65,26 +65,26 @@ web/
 └── README.md
 ```
 
-## Features Overview
+## 🎯 Features Overview
 
 ### Core Features
-- **Complete Todo Management**: Create, edit, delete, and toggle todos
-- **Category Organization**: Color-coded categories for better organization
-- **Priority System**: Visual priority indicators (high, medium, low)
-- **Real-time Search**: Instant search with debouncing
-- **Advanced Filtering**: Filter by status, category, and priority
-- **Pagination**: Efficient navigation through large todo lists
-- **Due Date Management**: Set and track due dates with overdue indicators
-- **Responsive Design**: Mobile-first design that works on all screen sizes
+- ✅ **Complete Todo Management**: Create, edit, delete, and toggle todos
+- ✅ **Category Organization**: Color-coded categories for better organization
+- ✅ **Priority System**: Visual priority indicators (high, medium, low)
+- ✅ **Real-time Search**: Instant search with debouncing
+- ✅ **Advanced Filtering**: Filter by status, category, and priority
+- ✅ **Pagination**: Efficient navigation through large todo lists
+- ✅ **Due Date Management**: Set and track due dates with overdue indicators
+- ✅ **Responsive Design**: Mobile-first design that works on all screen sizes
 
 ### UI/UX Enhancements
-- **Modern Interface**: Clean, professional design with Ant Design
-- **Loading States**: Skeleton loading and progress indicators
-- **Error Handling**: User-friendly error messages and recovery
-- **Animations**: Smooth transitions and interactions
-- **Accessibility**: Keyboard navigation and screen reader support
+- ✅ **Modern Interface**: Clean, professional design with Ant Design
+- ✅ **Loading States**: Skeleton loading and progress indicators
+- ✅ **Error Handling**: User-friendly error messages and recovery
+- ✅ **Animations**: Smooth transitions and interactions
+- ✅ **Accessibility**: Keyboard navigation and screen reader support
 
-## Technology Stack
+## 🛠️ Technology Stack
 
 ### Core Technologies
 - **React 19** - Latest React with concurrent features and improved performance
@@ -101,7 +101,7 @@ web/
 - **React Context API** - Centralized state management
 - **useReducer** - Predictable state updates with Redux-like patterns
 
-## Architecture
+## 🏛️ Architecture
 
 ### Component Architecture
 
@@ -203,7 +203,7 @@ const useResponsive = () => {
 - **Tablet (768-991px)**: Collapsible sidebar with icon-only mode
 - **Mobile (<768px)**: Hidden sidebar, slide-out drawer navigation
 
-## Components Documentation
+## 📱 Components Documentation
 
 ### Layout Components
 
@@ -271,7 +271,7 @@ Modal form for creating and editing categories.
 - Name uniqueness validation
 - Delete confirmation dialogs
 
-## State Management
+## 🔧 State Management
 
 ### Todo State Structure
 ```typescript
@@ -334,14 +334,14 @@ Hook for accessing category state and actions.
 #### useResponsive()
 Hook for responsive design utilities.
 
-## API Integration
+## 🌐 API Integration
 
 ### Service Layer
 I created a centralized API service layer for clean separation of concerns:
 
 ```typescript
 // services/api.ts
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:8080/api/v1';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -381,7 +381,7 @@ I implemented comprehensive error handling at multiple levels:
 3. **Component Level**: Error boundaries and fallback UIs
 4. **User Level**: Toast notifications with Ant Design message component
 
-## Form Validation
+## 📝 Form Validation
 
 ### Validation Rules
 I implemented comprehensive form validation using Ant Design's form validation:
@@ -421,7 +421,7 @@ export const todoValidationRules = {
 };
 ```
 
-## Styling & Theming
+## 🎨 Styling & Theming
 
 ### Theme Configuration
 I used Ant Design's theme customization for consistent branding:
@@ -461,7 +461,7 @@ export const getPriorityColor = (priority: Priority): string => {
 };
 ```
 
-## Responsive Design Details
+## 📱 Responsive Design Details
 
 ### Breakpoint Strategy
 ```typescript
@@ -482,7 +482,7 @@ const breakpoints = {
 - **Full-width Forms**: Optimized form layouts for small screens
 - **Large Action Buttons**: Better accessibility on mobile devices
 
-## Performance Optimizations
+## 🔄 Performance Optimizations
 
 ### React Optimizations
 ```typescript
@@ -520,7 +520,7 @@ const debouncedSearch = useMemo(
 - **Asset Optimization**: Optimized images and fonts
 - **Caching Strategy**: Service worker for offline capability (future enhancement)
 
-## Development Workflow
+## 🚀 Development Workflow
 
 ### Available Scripts
 ```bash
@@ -545,7 +545,7 @@ npm run type-check # TypeScript type checking
 - **Performance**: Optimization for large datasets
 - **Accessibility**: WCAG compliance and screen reader support
 
-## Key Features Summary
+## 🏆 Key Features Summary
 
 This frontend application demonstrates:
 
