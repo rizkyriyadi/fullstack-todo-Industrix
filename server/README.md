@@ -2,7 +2,7 @@
 
 A RESTful API server built with Go, Gin framework, and PostgreSQL for the todo application. This backend provides comprehensive CRUD operations, advanced filtering, pagination, and clean architecture.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Go 1.21 or higher
@@ -22,7 +22,29 @@ A RESTful API server built with Go, Gin framework, and PostgreSQL for the todo a
    ```
 
 3. **Setup environment:**
-   ```bash
+  # Development Com## Performance Considerations
+
+### Database Optimizations
+- **Indexes**: Strategic indexing on frequently queried columns
+  - `completed` for status filtering
+  - `category_id` for category filtering  
+  - `created_at` for default sorting
+  - Composite indexes for complex queries
+
+### API Performance
+- **Pagination**: Efficient OFFSET/LIMIT queries
+- **Filtering**: Database-level filtering to reduce data transfer
+- **Connection Pooling**: GORM handles connection pooling automatically
+- **Query Optimization**: Using proper joins and avoiding N+1 queriesash
+make build         # Build application
+make run           # Start development server
+make dev           # Hot reload development (requires air)
+make deps          # Download dependencies
+make fmt           # Format code
+make docker-build  # Build Docker image
+make docker-compose-up # Start with Docker Compose
+make help          # Show all commands
+```bash
    cp .env.example .env
    # Edit .env with your database credentials
    ```
@@ -41,7 +63,7 @@ A RESTful API server built with Go, Gin framework, and PostgreSQL for the todo a
 
 The server will start on `http://localhost:8080` and automatically run database migrations.
 
-## 🏗️ Architecture
+## Architecture
 
 ### Project Structure
 ```
@@ -73,12 +95,13 @@ HTTP Handlers ← Services ← Repository ← Database
 ```
 
 **Benefits:**
-- Easy to test each layer independently
-- Clear separation of responsibilities
-- Flexible and maintainable codebase
-- Follows Go community best practices
+### Benefits
+- Clean separation of concerns
+- Business logic centralized in services
+- Database operations abstracted
+- Easy to extend and maintain
 
-## 🛠️ Available Commands
+## Available Commands
 
 Using the included Makefile:
 
@@ -103,7 +126,7 @@ make docker-compose-up   # Start with Docker Compose
 make docker-compose-down # Stop Docker services
 ```
 
-## 📊 Database Design
+## Database Design
 
 ### Tables Structure
 
@@ -144,11 +167,11 @@ Strategic indexes for optimal query performance:
 - `idx_todos_title_search` - Full-text search using GIN index
 - Composite indexes for common query patterns
 
-## 📚 API Documentation
+## API Documentation
 
 ### Base URL
 ```
-http://localhost:8080/api/v1
+http://localhost:8080/api
 ```
 
 ### Authentication
@@ -156,9 +179,9 @@ Currently, no authentication is required. All endpoints are publicly accessible.
 
 ---
 
-## 📝 Todos API
+## Todos API
 
-### GET /api/v1/todos
+### GET /api/todos
 Retrieve paginated list of todos with optional filtering and sorting.
 
 **Query Parameters:**
@@ -175,7 +198,7 @@ Retrieve paginated list of todos with optional filtering and sorting.
 
 **Example Request:**
 ```bash
-curl "http://localhost:8080/api/v1/todos?page=1&limit=5&completed=false&priority=high"
+curl "http://localhost:8080/api/todos?page=1&limit=5&completed=false&priority=high"
 ```
 
 **Response:**
@@ -210,7 +233,7 @@ curl "http://localhost:8080/api/v1/todos?page=1&limit=5&completed=false&priority
 }
 ```
 
-### POST /api/v1/todos
+### POST /api/todos
 Create a new todo item.
 
 **Request Body:**
@@ -253,12 +276,12 @@ Create a new todo item.
 }
 ```
 
-### GET /api/v1/todos/:id
+### GET /api/todos/:id
 Get a specific todo by ID.
 
 **Example Request:**
 ```bash
-curl "http://localhost:8080/api/v1/todos/1"
+curl "http://localhost:8080/api/todos/1"
 ```
 
 **Response (200 OK):**
@@ -283,7 +306,7 @@ curl "http://localhost:8080/api/v1/todos/1"
 }
 ```
 
-### PUT /api/v1/todos/:id
+### PUT /api/todos/:id
 Update an existing todo item.
 
 **Request Body:**
@@ -319,12 +342,12 @@ Update an existing todo item.
 }
 ```
 
-### PATCH /api/v1/todos/:id/toggle
+### PATCH /api/todos/:id/toggle
 Toggle the completion status of a todo.
 
 **Example Request:**
 ```bash
-curl -X PATCH "http://localhost:8080/api/v1/todos/1/toggle"
+curl -X PATCH "http://localhost:8080/api/todos/1/toggle"
 ```
 
 **Response (200 OK):**
@@ -337,12 +360,12 @@ curl -X PATCH "http://localhost:8080/api/v1/todos/1/toggle"
 }
 ```
 
-### DELETE /api/v1/todos/:id
+### DELETE /api/todos/:id
 Delete a todo item (soft delete).
 
 **Example Request:**
 ```bash
-curl -X DELETE "http://localhost:8080/api/v1/todos/1"
+curl -X DELETE "http://localhost:8080/api/todos/1"
 ```
 
 **Response (200 OK):**
@@ -354,14 +377,14 @@ curl -X DELETE "http://localhost:8080/api/v1/todos/1"
 
 ---
 
-## 🏷️ Categories API
+## Categories API
 
-### GET /api/v1/categories
+### GET /api/categories
 Get all categories.
 
 **Example Request:**
 ```bash
-curl "http://localhost:8080/api/v1/categories"
+curl "http://localhost:8080/api/categories"
 ```
 
 **Response (200 OK):**
@@ -386,7 +409,7 @@ curl "http://localhost:8080/api/v1/categories"
 }
 ```
 
-### POST /api/v1/categories
+### POST /api/categories
 Create a new category.
 
 **Request Body:**
@@ -414,7 +437,7 @@ Create a new category.
 }
 ```
 
-### PUT /api/v1/categories/:id
+### PUT /api/categories/:id
 Update an existing category.
 
 **Request Body:**
@@ -438,12 +461,12 @@ Update an existing category.
 }
 ```
 
-### DELETE /api/v1/categories/:id
+### DELETE /api/categories/:id
 Delete a category (soft delete). Associated todos will have their category_id set to null.
 
 **Example Request:**
 ```bash
-curl -X DELETE "http://localhost:8080/api/v1/categories/1"
+curl -X DELETE "http://localhost:8080/api/categories/1"
 ```
 
 **Response (200 OK):**
@@ -455,7 +478,7 @@ curl -X DELETE "http://localhost:8080/api/v1/categories/1"
 
 ---
 
-## ❌ Error Responses
+## Error Responses
 
 All error responses follow a consistent format:
 
@@ -489,7 +512,7 @@ All error responses follow a consistent format:
 }
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -519,7 +542,7 @@ Database migrations run automatically on server startup. Migration files are loc
 - `001_create_categories_table.sql` - Creates categories table with default data
 - `002_create_todos_table.sql` - Creates todos table with indexes
 
-## 🐳 Docker Support
+## Docker Support
 
 ### Using Docker Compose (Recommended)
 
@@ -545,7 +568,7 @@ docker build -t todo-backend .
 docker run -p 8080:8080 --env-file .env todo-backend
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Running Tests
 ```bash
@@ -570,7 +593,7 @@ Tests cover:
 - Error handling scenarios
 - Database operations
 
-## 🚀 Development
+## Development
 
 ### Hot Reload
 Install Air for hot reload during development:
@@ -594,7 +617,7 @@ make lint  # Lint code (requires golangci-lint)
 5. **Add Routes**: Register in `internal/handlers/routes.go`
 6. **Add Migration**: Create SQL migration file
 
-## 🏆 Key Features
+## Key Features
 
 - **Clean Architecture**: Layered design with clear separation of concerns
 - **Type Safety**: Comprehensive struct validation with GORM tags

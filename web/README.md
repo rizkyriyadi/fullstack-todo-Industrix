@@ -526,7 +526,6 @@ const debouncedSearch = useMemo(
 ```bash
 npm start          # Start development server
 npm run build      # Build for production  
-npm test           # Run tests
 npm run lint       # Lint code
 npm run format     # Format code with Prettier
 npm run type-check # TypeScript type checking
@@ -536,7 +535,6 @@ npm run type-check # TypeScript type checking
 - **ESLint**: Consistent code style and error prevention
 - **Prettier**: Automatic code formatting
 - **TypeScript**: Compile-time error catching
-- **Husky**: Git hooks for pre-commit quality checks
 
 ### Development Best Practices
 - **Component-First**: Build reusable, testable components
@@ -555,7 +553,7 @@ This frontend application demonstrates:
 - **Responsive Design**: Mobile-first approach with Ant Design
 - **Performance**: Optimized rendering and API calls
 - **User Experience**: Intuitive interface with excellent feedback
-- **Code Quality**: Clean, maintainable, and testable code
+- **Code Quality**: Clean, maintainable, and well-structured code
 - **Error Handling**: Robust error management and recovery
 - **Accessibility**: Keyboard navigation and screen reader support
 
